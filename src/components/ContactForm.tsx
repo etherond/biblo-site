@@ -50,8 +50,9 @@ export default function ContactForm() {
       setMessage("Merci ! Nous vous enverrons une invitation dès que le produit sera disponible.");
       setMessageColor("text-emerald-700");
       if (inputRef.current) inputRef.current.value = "";
-    } catch (err: any) {
-      setMessage(err?.message || "Impossible d'envoyer la demande pour le moment.");
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : "Impossible d'envoyer la demande pour le moment.";
+      setMessage(errorMessage);
       setMessageColor("text-red-700");
     } finally {
       setIsSubmitting(false);

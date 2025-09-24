@@ -8,7 +8,7 @@ export default function Home() {
       {/* Big Title */}
       <section className="pt-20 px-4 md:pt-14">
         <div className="mx-auto w-full max-w-[1120px] px-4">
-          <p className="text-5xl md:text-6xl font-extrabold tracking-tight text-center">La solution pour les architectes et designers d'intérieur</p>
+          <p className="text-5xl md:text-6xl font-extrabold tracking-tight text-center">La solution pour les architectes et designers d&#39;intérieur</p>
           <p className="text-sm md:text-base mt-4 block w-fit mx-auto text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
             Disponible fin 2025
         </p>
