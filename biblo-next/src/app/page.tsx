@@ -5,11 +5,19 @@ import ContactForm from "../components/ContactForm";
 export default function Home() {
   return (
     <main id="top">
+      {/* Big Title */}
+      <section className="pt-20 px-4 md:pt-14">
+        <div className="mx-auto w-full max-w-[1120px] px-4">
+          <p className="text-5xl md:text-6xl font-extrabold tracking-tight text-center">La solution pour les architectes et designers d'intérieur</p>
+          <p className="text-sm md:text-base mt-4 block w-fit mx-auto text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
+            Disponible fin 2025
+        </p>
+        </div>
+      </section>
       {/* Hero */}
-      <section className="py-16 md:py-20">
+      <section className="pt-12 md:pt-14 pb-20 md:pb-24 px-4">
         <div className="mx-auto w-full max-w-[1120px] px-4 grid items-center gap-8 md:gap-10 md:grid-cols-2">
           <div>
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight">La solution pour les architectes et designers d'intérieur</h1>
             <p className="mt-3 text-zinc-700 text-lg md:text-xl max-w-prose">Dites adieu aux tableaux Excel interminables, aux fichiers mal rangés, et aux moodboards chronophages.</p>
             <ul className="mt-4 space-y-2">
               {[
@@ -23,8 +31,8 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <div className="mt-5 flex items-center gap-3">
-              <Link href="#contact" className="inline-flex items-center rounded-full bg-black text-white px-5 py-2.5 font-semibold">Obtenir mon accès</Link>
+            <div className="mt-5 flex items-center gap-3 justify-center md:justify-start">
+              <Link href="#contact" className="inline-flex items-center rounded-full bg-black text-white px-5 py-2.5 font-semibold mt-4 mb-12">Obtenir mon accès</Link>
             </div>
           </div>
           <div>
@@ -34,30 +42,24 @@ export default function Home() {
       </section>
 
       {/* Before (Pains) */}
-      <section className="py-12 md:py-14 bg-[#f3f4f6]" id="avant">
+      <section className="py-16 md:py-20 bg-[#f3f4f6]" id="avant">
         <div className="mx-auto w-full max-w-[1120px] px-4">
-          <h2 className="text-2xl md:text-3xl font-semibold text-center">Vous perdez un temps fou à organiser vos projets ?</h2>
-          <div className="grid gap-2 mt-12 sm:grid-cols-2 lg:grid-cols-2 justify-items-center max-w-[920px] mx-auto">
+          <h2 className="text-2xl md:text-4xl font-semibold text-center">Vous perdez un temps fou à organiser vos projets ?</h2>
+          <ul className="mt-10 max-w-[900px] mx-auto space-y-4">
             {[
-              { icon: (
-                <svg viewBox="0 0 24 24" fill="none" className="w-16 h-16 stroke-zinc-400"><path d="M4 6h16M4 12h10M4 18h6" strokeWidth="1.8" strokeLinecap="round"/></svg>
-              ), text: "Une gestion de données de plus en plus complexe" },
-              { icon: (
-                <svg viewBox="0 0 24 24" fill="none" className="w-16 h-16 stroke-zinc-400"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z" strokeWidth="1.8"/></svg>
-              ), text: "Des visuels éparpillés dans différents dossiers" },
-              { icon: (
-                <svg viewBox="0 0 24 24" fill="none" className="w-16 h-16 stroke-zinc-400"><rect x="3" y="4" width="18" height="16" rx="2" strokeWidth="1.8"/><path d="M3 8h18M7 12h3M7 16h3M13 12h4M13 16h4" strokeWidth="1.8"/></svg>
-              ), text: "Des informations produits noyées dans des tableaux Excel sans fin" },
-              { icon: (
-                <svg viewBox="0 0 24 24" fill="none" className="w-16 h-16 stroke-zinc-400"><circle cx="12" cy="13" r="8" strokeWidth="1.8"/><path d="M12 13V8m0-4v2M12 13l4 2" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              ), text: "Des moodboards et présentations clients qui prennent un temps précieux" },
-            ].map(({ icon, text }) => (
-              <div key={text} className="text-center grid gap-2 p-4 rounded-xl border border-zinc-200 bg-white place-items-center max-w-[420px] w-full">
-                <div>{icon}</div>
-                <p className="text-[1.125rem] leading-snug text-zinc-900 m-0">{text}</p>
-              </div>
+              "Une gestion de données de plus en plus complexe",
+              "Des visuels éparpillés dans différents dossiers",
+              "Des informations produits noyées dans des tableaux Excel sans fin",
+              "Des moodboards et présentations clients qui prennent un temps précieux",
+            ].map((text) => (
+              <li key={text} className="flex items-start justify-center gap-3">
+                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 mt-1">
+                  <path d="M6 6l12 12M18 6L6 18" stroke="#ef4444" strokeWidth="2.2" strokeLinecap="round"/>
+                </svg>
+                <span className="text-[1.25rem] leading-snug text-center text-zinc-900">{text}</span>
+              </li>
             ))}
-          </div>
+          </ul>
           <div className="mt-10 flex justify-center">
             <Link href="#contact" className="inline-flex items-center rounded-full bg-black text-white px-5 py-2.5 font-semibold">Passez à une nouvelle façon de travailler</Link>
           </div>
@@ -65,22 +67,22 @@ export default function Home() {
       </section>
 
       {/* After */}
-      <section className="py-12" id="apres">
+      <section className="py-16 md:py-20" id="apres">
         <div className="mx-auto w-full max-w-[1120px] px-4">
-          <h2 className="text-2xl md:text-3xl font-semibold text-center">Imaginez vos projets fluides, organisés et inspirants.</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold text-center">Imaginez vos projets fluides, organisés et inspirants.</h2>
           <div className="grid gap-3 mt-12 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { title: "Tout à portée de clic", desc: "Chaque inspiration et référence produit à portée de clic, sans stress.", icon: (
-                <svg viewBox="0 0 24 24" fill="none" className="w-[72px] h-[72px] mx-auto"><circle cx="11" cy="11" r="7" strokeWidth="1.8" stroke="#3D82F6"/><path d="M20 20l-4-4" strokeWidth="1.8" strokeLinecap="round" stroke="#3D82F6"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" className="w-[72px] h-[72px] mx-auto"><circle cx="11" cy="11" r="7" strokeWidth="1.8" stroke="#0d0f12"/><path d="M20 20l-4-4" strokeWidth="1.8" strokeLinecap="round" stroke="#0d0f12"/></svg>
               )},
               { title: "Moodboards élégants", desc: "Des moodboards élégants créés en quelques instants pour communiquer simplement vos idées à vos clients.", icon: (
-                <svg viewBox="0 0 24 24" fill="none" className="w-[72px] h-[72px] mx-auto"><rect x="3" y="4" width="7" height="7" rx="1" strokeWidth="1.8" stroke="#3D82F6"/><rect x="14" y="4" width="7" height="7" rx="1" strokeWidth="1.8" stroke="#3D82F6"/><rect x="3" y="14" width="7" height="7" rx="1" strokeWidth="1.8" stroke="#3D82F6"/><rect x="14" y="14" width="7" height="7" rx="1" strokeWidth="1.8" stroke="#3D82F6"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" className="w-[72px] h-[72px] mx-auto"><rect x="3" y="4" width="7" height="7" rx="1" strokeWidth="1.8" stroke="#0d0f12"/><rect x="14" y="4" width="7" height="7" rx="1" strokeWidth="1.8" stroke="#0d0f12"/><rect x="3" y="14" width="7" height="7" rx="1" strokeWidth="1.8" stroke="#0d0f12"/><rect x="14" y="14" width="7" height="7" rx="1" strokeWidth="1.8" stroke="#0d0f12"/></svg>
               )},
-              { title: "Image professionnelle", desc: "Une image claire, organisée et moderne qui valorise votre travail de professionnel.", icon: (
-                <svg viewBox="0 0 24 24" fill="none" className="w-[72px] h-[72px] mx-auto"><path d="M12 3l7 4v5c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V7l7-4Z" strokeWidth="1.8" stroke="#3D82F6"/><path d="M9.5 12.5l1.8 1.8 3.2-3.2" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" stroke="#3D82F6"/></svg>
+              { title: "Image professionnelle", desc: "Une image claire, organisée et moderne qui valorise votre travail de professionnel·le.", icon: (
+                <svg viewBox="0 0 24 24" fill="none" className="w-[72px] h-[72px] mx-auto"><path d="M12 3l7 4v5c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V7l7-4Z" strokeWidth="1.8" stroke="#0d0f12"/><path d="M9.5 12.5l1.8 1.8 3.2-3.2" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" stroke="#0d0f12"/></svg>
               )},
             ].map(({ title, desc, icon }) => (
-              <div key={title} className="text-center rounded-xl border border-zinc-200 bg-transparent p-4 md:p-5">
+              <div key={title} className="text-center rounded-xl bg-transparent p-4 md:p-5">
                 <div className="w-[72px] h-[72px] mx-auto mb-2">{icon}</div>
                 <div className="text-xl md:text-2xl font-semibold">{title}</div>
                 <p className="text-zinc-700 mt-1">{desc}</p>
@@ -92,9 +94,9 @@ export default function Home() {
       </section>
 
       {/* Product */}
-      <section className="py-12 bg-[#f3f4f6]" id="produit">
+      <section className="py-16 md:py-20 bg-[#f3f4f6]" id="produit">
         <div className="mx-auto w-full max-w-[1120px] px-4">
-          <h2 className="text-2xl md:text-3xl font-semibold text-center">Biblo — La plateforme tout-en-un</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold text-center">Biblo — La plateforme tout-en-un</h2>
           <p className="mt-2 mb-8 text-center text-zinc-600 text-[1.25em]">Centralisez vos références produits, vos inspirations et vos moodboards, pour un flux de travail enfin simple et efficace.</p>
           <div className="mt-12 grid gap-6">
             {[{
@@ -125,7 +127,7 @@ export default function Home() {
       </section>
 
       {/* Founder Quote */}
-      <section className="py-16">
+      <section className="py-18 md:py-24">
         <div className="mx-auto w-full max-w-[1120px] px-4">
           <blockquote className="max-w-[900px] mx-auto border-l-4 border-black bg-white rounded-r-xl p-5 italic text-[#0d0f12] font-serif text-xl">
             “J’ai créé Biblo après avoir vu des architectes et décorateurs passer plus de temps à organiser qu’à créer. Mon but : redonner du temps à votre créativité.”
@@ -134,9 +136,9 @@ export default function Home() {
       </section>
 
       {/* Contact CTA */}
-      <section id="contact" className="pt-8 pb-24">
+      <section id="contact" className="pb-18 md:pb-24">
         <div className="mx-auto w-full max-w-[1120px] px-4">
-          <h2 className="text-2xl md:text-3xl font-semibold text-center">Rejoignez la communauté Biblo</h2>
+          <h2 className="text-3xl md:text-4xl mb-8 font-semibold text-center">Rejoignez la communauté Biblo</h2>
           <ContactForm />
         </div>
       </section>
