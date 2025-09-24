@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import ContactForm from "../components/ContactForm";
 
 export default function Home() {
   return (
@@ -136,11 +137,7 @@ export default function Home() {
       <section id="contact" className="pt-8 pb-24">
         <div className="mx-auto w-full max-w-[1120px] px-4">
           <h2 className="text-2xl md:text-3xl font-semibold text-center">Rejoignez la communauté Biblo</h2>
-          <div className="mt-3 grid gap-3 sm:grid-cols-[1fr,auto] bg-white border border-zinc-200 rounded-xl p-6 max-w-[560px] mx-auto min-h-[120px]">
-            <input id="email" type="email" placeholder="Votre email" className="h-14 px-4 rounded-lg border border-zinc-200 text-lg outline-none focus:border-[#2f6df6] focus:ring-4 focus:ring-[#2f6df6]/20" />
-            <button className="h-14 px-5 rounded-full bg-black text-white font-semibold">Obtenir mon accès</button>
-          </div>
-          <p id="form-message" className="mt-2 text-center text-zinc-500"></p>
+          <ContactForm />
         </div>
       </section>
     </main>
