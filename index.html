@@ -1,50 +1,511 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblo - SaaS pour les Designers d'Intérieur</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-white text-black font-sans">
-    <div class="min-h-screen flex flex-col justify-center items-center px-6">
-        <!-- Header -->
-        <header class="text-center space-y-4 mt-12">
-            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
-                Biblo
-            </h1>
-        </header>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Biblo — La solution pour les architectes et designers d'intérieur</title>
+    <meta name="description" content="Biblo centralise vos références produits, inspirations et moodboards. Gagnez du temps, structurez vos projets, partagez facilement avec vos clients." />
 
-        <!-- Content Section -->
-        <section class="mt-16 space-y-12 max-w-2xl text-center">
-            <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
-                Simplifiez. Organisez. Partagez.
-            </h2>
-            <p class="text-lg md:text-xl leading-relaxed">
-                Architectes et décorateurs d'intérieur, dites adieu aux tableaux Excel interminables, aux dossiers mal rangés, aux images sans nom et aux moodboards chronophages.
-            </p>
-            <p class="text-lg md:text-xl leading-relaxed font-bold">
-                Biblo vous permet d'enregistrer en quelques instants vos objets et matériaux, de créer votre propre bibliothèque et de partager rapidement vos projets avec vos clients.
-            </p>
-        </section>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect rx='10' ry='10' width='64' height='64' fill='%23000'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Helvetica, Arial' font-size='34' fill='white'%3EB%3C/text%3E%3C/svg%3E" />
 
-       <!-- Availability -->
-        <p class="text-sm md:text-base mt-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
-            Disponible en 2025
-        </p>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --text: #0d0f12;
+        --muted: #6b7280;
+        --line: #e5e7eb;
+        --card: #f8fafc;
+        --accent: #2f6df6; /* soft architectural blue */
+        --accent-ink: #ffffff;
+        --shadow: 0 10px 30px rgba(13, 15, 18, 0.07);
+        --radius: 14px;
+        --radius-sm: 10px;
+        --header-h: 64px;
+      }
 
-        <!-- Call to Action -->
-        <div class="mt-6">
-            <a href="mailto:contact@biblo.app" 
-               class="inline-block bg-black text-white font-bold py-3 px-6 rounded-lg shadow hover:bg-gray-800 focus:outline-none focus:ring focus:ring-gray-600">
-                Contactez-nous
-            </a>
+      html { scroll-behavior: smooth; }
+      *, *::before, *::after { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      a { color: inherit; text-decoration: none; }
+      img { max-width: 100%; display: block; }
+
+      .container {
+        width: min(1120px, 100% - 32px);
+        margin-inline: auto;
+      }
+
+      /* Header */
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        height: var(--header-h);
+        display: flex;
+        align-items: center;
+        backdrop-filter: saturate(180%) blur(12px);
+        background: rgba(255, 255, 255, 0.7);
+        border-bottom: 1px solid rgba(229, 231, 235, 0.7);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+      }
+      .brand-logo {
+        width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center;
+        background: var(--text); color: #fff; font-size: 14px; font-weight: 800;
+      }
+      .nav-links { display: none; gap: 20px; color: var(--muted); }
+      .nav-cta { display: flex; align-items: center; gap: 10px; }
+      .btn { appearance: none; border: 1px solid var(--line); background: #fff; color: var(--text);
+        padding: 10px 16px; border-radius: 999px; font-weight: 600; cursor: pointer; transition: all .2s ease; }
+      .btn:hover { box-shadow: var(--shadow); transform: translateY(-1px); }
+      .btn-ghost { background: transparent; border-color: rgba(107, 114, 128, 0.35); color: var(--text); }
+      .btn-primary { background: #000000; color: #ffffff; border-color: #000000; }
+      .btn-primary:hover { filter: brightness(0.95); }
+
+      @media (min-width: 900px) {
+        .nav-links { display: flex; }
+      }
+
+      /* Hero */
+      section { scroll-margin-top: calc(var(--header-h) + 20px); }
+      .hero {
+        padding: 64px 0 48px;
+      }
+      .hero-grid {
+        display: grid; gap: 32px; align-items: center;
+        grid-template-columns: 1fr;
+      }
+      .eyebrow { color: var(--muted); font-weight: 600; letter-spacing: .3px; text-transform: uppercase; font-size: 12px; }
+      .hero h1 {
+        font-size: clamp(28px, 4vw, 48px);
+        line-height: 1.08; margin: 10px 0 14px; letter-spacing: -0.5px;
+      }
+      .hero p.sub {
+        color: #374151; font-size: clamp(16px, 2vw, 20px);
+        max-width: 68ch; margin: 0 0 22px;
+      }
+      .benefits { display: grid; gap: 10px; margin: 14px 0 26px; }
+      .benefit { display: flex; align-items: flex-start; gap: 10px; color: #111827; }
+      .benefit svg { flex: 0 0 auto; margin-top: 3px; }
+
+      .hero-card { background: transparent; border: none; border-radius: 0; padding: 0; box-shadow: none; }
+
+      @media (min-width: 900px) {
+        .hero { padding: 76px 0 64px; }
+        .hero-grid { grid-template-columns: 0.9fr 1.1fr; gap: 40px; }
+      }
+
+      /* Sections */
+      .section { padding: 48px 0; border-top: 1px solid var(--line); }
+      .section.alt { background: #fcfdfd; }
+      .section h2 { font-size: clamp(22px, 3.2vw, 34px); margin: 0 0 14px; letter-spacing: -0.3px; text-align: center; }
+      .lede { color: var(--muted); max-width: 70ch; margin-left: auto; margin-right: auto; text-align: center; font-size: 1.25em; }
+
+      .cards { display: grid; gap: 14px; grid-template-columns: 1fr; margin-top: 18px; }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 18px;
+        box-shadow: var(--shadow);
+      }
+      .card .title { font-weight: 700; margin-bottom: 8px; }
+      .card .desc { color: #1f2937; }
+      .card-icon { width: 40px; height: 40px; border-radius: 10px; background: transparent; display: grid; place-items: center; margin-bottom: 8px; }
+      .card-icon svg { width: 22px; height: 22px; stroke: #6b7280; }
+      /* Après section emphasis */
+      #apres .card { text-align: center; background: transparent; border-radius: var(--radius); border: none; }
+      #apres .card .title { font-size: clamp(20px, 2.2vw, 24px); line-height: 1.25; }
+      #apres .card-icon { width: 72px; height: 72px; margin: 0 auto 12px; background: transparent; }
+      #apres .card-icon svg { width: 40px; height: 40px; stroke: #241DBE; }
+      .step { display: flex; gap: 12px; align-items: flex-start; }
+      .step-index { width: 28px; height: 28px; border-radius: 999px; display: grid; place-items: center; background: #eef2ff; color: #3730a3; font-weight: 700; }
+      /* Pains */
+      .pain-card { padding-top: 22px; padding-bottom: 22px; }
+      .pain-icon { width: 96px; height: 96px; border-radius: 18px; background: transparent; display: grid; place-items: center; }
+      .pain-icon svg { width: 56px; height: 56px; stroke: #9ca3af; }
+      .pains-rows { display: grid; gap: 16px; margin-top: 18px; justify-items: center; margin-left: auto; margin-right: auto; }
+      .pain-row {
+        width: 100%;
+        max-width: 780px;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        column-gap: 14px;
+        row-gap: 6px;
+        padding: 4px 2px;
+      }
+      .pain-row .desc { color: #111827; font-weight: 400; font-size: clamp(18px, 2.1vw, 20px); line-height: 1.35; }
+
+      /* Pains grid - lightweight cards */
+      .pains-grid { display: grid; gap: 12px; margin-top: 18px; grid-template-columns: 1fr; }
+      @media (min-width: 720px) { .pains-grid { grid-template-columns: repeat(2, 1fr); } }
+      .pain-lite { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 12px; }
+      .pain-lite .desc { margin: 0; color: #111827; font-weight: 400; font-size: clamp(16px, 2vw, 18px); line-height: 1.4; }
+
+      @media (min-width: 720px) {
+        .cards { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (min-width: 1024px) {
+        .cards { grid-template-columns: repeat(3, 1fr); }
+      }
+
+      .cta-row { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; justify-content: center; }
+      .hero .cta-row { justify-content: flex-start; }
+
+      .quote {
+        margin-top: 20px;
+        padding: 18px;
+        border-left: 4px solid #0d0f12; /* neutral black */
+        background: #ffffff; /* white */
+        border-radius: 0 var(--radius) var(--radius) 0;
+        color: #0d0f12; /* neutral text */
+        font-style: italic;
+        font-family: Georgia, "Times New Roman", Times, serif;
+      }
+
+      /* Footer */
+      .footer { padding: 40px 0 64px; border-top: 1px solid var(--line); background: #0b0c0f; color: #ffffff; }
+      .footer .container { text-align: center; }
+      .email-form {
+        display: grid; gap: 12px; grid-template-columns: 1fr; align-items: center;
+        background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+        padding: 22px; box-shadow: var(--shadow);
+        max-width: 560px; margin-left: auto; margin-right: auto; min-height: 120px;
+      }
+      .email-form input[type="email"] {
+        width: 100%; padding: 16px 16px; border-radius: 12px; border: 1px solid var(--line);
+        font-size: 18px; outline: none; transition: border-color .2s ease, box-shadow .2s ease; height: 56px;
+      }
+      .email-form input[type="email"]:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(47, 109, 246, .12); }
+
+      @media (min-width: 720px) {
+        .email-form { grid-template-columns: 1fr auto; }
+        .email-form button { height: 56px; padding: 0 20px; }
+      }
+
+      .links { display: flex; gap: 16px; flex-wrap: wrap; color: #cbd5e1; font-size: 14px; margin-top: 16px; justify-content: center; }
+      .links a { color: #e5e7eb; text-decoration: underline; text-underline-offset: 3px; }
+      .links a:hover { color: #ffffff; }
+
+      /* Helpers */
+      .muted { color: var(--muted); }
+      .center { text-align: center; }
+      .spacer-8 { height: 8px; }
+      .spacer-16 { height: 16px; }
+      .spacer-24 { height: 24px; }
+      .spacer-32 { height: 32px; }
+
+      /* Simple illustration card */
+      .mock {
+        border-radius: var(--radius);
+        border: 1px dashed #d1d5db;
+        background: conic-gradient(from 180deg at 50% 50%, #ffffff, #f9fafb, #ffffff);
+        min-height: 260px;
+        display: grid; place-items: center; color: var(--muted);
+      }
+      .mock-grid { display: grid; gap: 10px; grid-template-columns: repeat(6, 1fr); width: 100%; padding: 10px; }
+      .mock .tile { height: 56px; border-radius: 10px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow); }
+      .mock .tile.accent { background: #eef2ff; border-color: #e0e7ff; }
+
+      /* Media constraints */
+      .product-img img { width: 100%; max-width: 500px; margin-left: auto; margin-right: auto; display: block; }
+
+      /* Product rows: side-by-side with alternating layout */
+      .product-rows { display: grid; gap: 16px; margin-top: 18px; }
+      .product-row { display: grid; grid-template-columns: 1fr; gap: 14px; align-items: center; background: transparent; border: none; border-radius: 0; padding: 16px; box-shadow: none; }
+      .product-text { text-align: center; margin-inline: auto; }
+      .product-text .title { font-weight: 700; margin-bottom: 8px; font-size: clamp(20px, 2.4vw, 28px); line-height: 1.2; }
+      .product-text .desc { color: #1f2937; }
+      /* Hero image light frame */
+      .hero-card img { border: 1px solid var(--line); box-shadow: 0 12px 30px rgba(13, 15, 18, 0.06); border-radius: 12px; }
+      @media (min-width: 900px) {
+        .product-row { grid-template-columns: 1.05fr 0.95fr; padding: 22px; }
+        .product-row .product-img { order: 1; justify-self: center; }
+        .product-row .product-text { order: 2; text-align: left; max-width: 540px; }
+        .product-row:nth-child(even) .product-img { order: 2; }
+        .product-row:nth-child(even) .product-text { order: 1; justify-self: end; text-align: left; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container nav">
+        <a href="#top" class="brand">
+          <span class="brand-logo">B</span>
+          <span>Biblo</span>
+        </a>
+        
+        <div class="nav-cta">
+          <a href="#login" class="btn btn-ghost">Connexion</a>
+          <a href="#contact" class="btn btn-primary">Obtenir mon accès</a>
         </div>
+      </div>
+    </header>
 
-        <!-- Footer -->
-        <footer class="mt-24 text-center text-sm opacity-50">
-            &copy; 2025 Biblo. Tous droits réservés.
-        </footer>
-    </div>
-</body>
-</html>
+    <main id="top">
+      <!-- Hero -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <h1>La solution pour les architectes et designers d'intérieur</h1>
+            <p class="sub">Dites adieu aux tableaux Excel interminables, aux fichiers mal rangés, et aux moodboards chronophages.</p>
+
+            <div class="benefits">
+              <div class="benefit">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#241DBE" stroke-width="2"/><path d="M7 12l3 3 7-7" stroke="#241DBE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Créez facilement votre bibliothèque de mobilier et matériaux</span>
+              </div>
+              <div class="benefit">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#241DBE" stroke-width="2"/><path d="M7 12l3 3 7-7" stroke="#241DBE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Gérez efficacement vos données d’un projet à l’autre</span>
+              </div>
+              <div class="benefit">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#241DBE" stroke-width="2"/><path d="M7 12l3 3 7-7" stroke="#241DBE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Partagez rapidement vos propositions avec vos clients</span>
+              </div>
+            </div>
+
+            <div class="cta-row">
+              <a href="#contact" class="btn btn-primary" aria-label="Obtenir mon accès">Obtenir mon accès</a>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <img src="img/hero.avif" alt="Aperçu de Biblo pour architectes et designers d'intérieur" loading="eager" style="width:100%; display:block;" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Before -->
+      <section id="avant" class="section alt">
+        <div class="container">
+          <h2>Vous perdez un temps fou à organiser vos projets ?</h2>
+        
+          <!-- Pains as lightweight grid cards -->
+          <div class="pains-grid">
+            <div class="pain-lite">
+              <div class="pain-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 6h16M4 12h10M4 18h6" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <p class="desc">Une gestion de données de plus en plus complexe</p>
+            </div>
+            <div class="pain-lite">
+              <div class="pain-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z" stroke-width="1.8"/>
+                </svg>
+              </div>
+              <p class="desc">Des visuels éparpillés dans différents dossiers</p>
+            </div>
+            <div class="pain-lite">
+              <div class="pain-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="3" y="4" width="18" height="16" rx="2" stroke-width="1.8"/>
+                  <path d="M3 8h18M7 12h3M7 16h3M13 12h4M13 16h4" stroke-width="1.8"/>
+                </svg>
+              </div>
+              <p class="desc">Des informations produits noyées dans des tableaux Excel sans fin</p>
+            </div>
+            <div class="pain-lite">
+              <div class="pain-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="13" r="8" stroke-width="1.8"/>
+                  <path d="M12 13V8m0-4v2M12 13l4 2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <p class="desc">Des moodboards et présentations clients qui prennent un temps précieux</p>
+            </div>
+          </div>
+          <div class="cta-row">
+            <a href="#contact" class="btn btn-primary">Passez à une nouvelle façon de travailler</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- After -->
+      <section id="apres" class="section">
+        <div class="container">
+          <h2>Imaginez vos projets fluides, organisés et inspirants.</h2>
+          <div class="cards">
+            <div class="card">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="11" cy="11" r="7" stroke-width="1.8"/>
+                  <path d="M20 20l-4-4" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="title">Tout à portée de clic</div>
+              <p class="desc">Chaque inspiration et référence produit à portée de clic, sans stress.</p>
+            </div>
+            <div class="card">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="3" y="4" width="7" height="7" rx="1" stroke-width="1.8"/>
+                  <rect x="14" y="4" width="7" height="7" rx="1" stroke-width="1.8"/>
+                  <rect x="3" y="14" width="7" height="7" rx="1" stroke-width="1.8"/>
+                  <rect x="14" y="14" width="7" height="7" rx="1" stroke-width="1.8"/>
+                </svg>
+              </div>
+              <div class="title">Moodboards élégants</div>
+              <p class="desc">Des moodboards élégants créés en quelques instants pour communiquer simplement vos idées à vos clients.</p>
+            </div>
+            <div class="card">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 3l7 4v5c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V7l7-4Z" stroke-width="1.8"/>
+                  <path d="M9.5 12.5l1.8 1.8 3.2-3.2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="title">Image professionnelle</div>
+              <p class="desc">Une image claire, organisée et moderne qui valorise votre travail de professionnel.</p>
+            </div>
+          </div>
+          <div class="spacer-8"></div>
+          <p class="lede">Biblo vous offre un espace pensé de bout en bout pour les architectes et décorateur·ice·s d’intérieur.</p>
+        </div>
+      </section>
+
+      <!-- Product -->
+      <section id="produit" class="section alt">
+        <div class="container">
+          <h2>Biblo — La plateforme tout-en-un</h2>
+          <p class="lede">Centralisez vos références produits, vos inspirations et vos moodboards, pour un flux de travail enfin simple et efficace.</p>
+          <!-- Impactful product rows with image placeholders -->
+          <div class="product-rows">
+            <div class="product-row">
+              <div class="product-text">
+                <div class="title">Collecter rapidement vos produits</div>
+                <p class="desc">Sélectionnez rapidement vos objets grâce au clipper web qui capture intelligemment les informations des produits trouvés sur Internet. En quelques clics, enregistrez l'objet ou le matériau dans votre bibliothèque avec toutes ses données : images, prix, dimensions et caractéristiques.</p>
+              </div>
+              <div class="product-img">
+                <img src="img/product.avif" alt="Capture de produit via le clipper web Biblo" loading="lazy" style="width:100%; border-radius:12px; border:1px solid var(--line); box-shadow: var(--shadow);" />
+              </div>
+            </div>
+
+            <div class="product-row">
+              <div class="product-text">
+                <div class="title">Gérer efficacement votre bibliothèque</div>
+                <p class="desc">Constituez votre base d'objets, projet après projet. Retrouvez-les facilement grâce aux filtres. Dupliquez vos projets et moodboards simplement, sans perdre les données liées aux produits.</p>
+              </div>
+              <div class="product-img">
+                <img src="img/library.avif" alt="Bibliothèque d'objets et matériaux dans Biblo" loading="lazy" style="width:100%; border-radius:12px; border:1px solid var(--line); box-shadow: var(--shadow);" />
+              </div>
+            </div>
+
+            <div class="product-row">
+              <div class="product-text">
+                <div class="title">Partager facilement</div>
+                <p class="desc">Réalisez rapidement vos moodboards grâce à nos planches intelligentes reliées aux informations des produits et des projets. Partagez vos propositions avec vos clients et recueillez leurs impressions via commentaires, réactions et tags de suivi.</p>
+              </div>
+              <div class="product-img">
+                <img src="img/moodboard.avif" alt="Moodboard et partage de propositions dans Biblo" loading="lazy" style="width:100%; border-radius:12px; border:1px solid var(--line); box-shadow: var(--shadow);" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Founder Quote + CTA (moved after Product) -->
+      <section class="section">
+        <div class="container">
+          <div class="quote" style="max-width: 900px; margin-left:auto; margin-right:auto;">“J’ai créé Biblo après avoir vu des architectes et décorateurs passer plus de temps à organiser qu’à créer. Mon but : redonner du temps à votre créativité.”</div>
+        </div>
+      </section>
+
+      <!-- Contact CTA Section (separate from footer) -->
+      <section id="contact" class="section">
+        <div class="container">
+          <h2 class="center">Rejoignez la communauté Biblo</h2>
+          <div class="spacer-8"></div>
+          <form id="access-form" class="email-form" novalidate>
+            <input type="email" id="email" name="email" placeholder="Votre email" aria-label="Votre email" required />
+            <button type="submit" class="btn btn-primary">Obtenir mon accès</button>
+          </form>
+          <div id="form-message" class="muted" role="status" style="margin-top:10px;"></div>
+        </div>
+      </section>
+
+      <!-- Footer (links only) -->
+      <section class="footer">
+        <div class="container">
+          <div class="links">
+            <a href="#">Mentions légales</a>
+            <a href="#">Politique de confidentialité</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // Smooth anchor scroll accounting for sticky header (native CSS scroll-behavior handles most)
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor){
+        anchor.addEventListener('click', function(e){
+          var href = this.getAttribute('href');
+          if (href && href.length > 1) {
+            var target = document.querySelector(href);
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              if (href === '#contact') {
+                setTimeout(function(){
+                  var emailEl = document.getElementById('email');
+                  if (emailEl) { emailEl.focus(); }
+                }, 400);
+              }
+            }
+          }
+        });
+      });
+
+      // Basic form handling with inline feedback
+      var form = document.getElementById('access-form');
+      var emailInput = document.getElementById('email');
+      var message = document.getElementById('form-message');
+
+      function isValidEmail(value) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value).toLowerCase());
+      }
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        var email = emailInput.value.trim();
+        if (!isValidEmail(email)) {
+          message.textContent = 'Veuillez entrer une adresse email valide.';
+          message.style.color = '#b91c1c';
+          emailInput.focus();
+          return;
+        }
+        // Simulate successful capture; integrate with backend or provider later
+        message.textContent = 'Merci ! Nous vous recontacterons très bientôt.';
+        message.style.color = '#065f46';
+        form.reset();
+      });
+    </script>
+  </body>
+  </html>
+
+
