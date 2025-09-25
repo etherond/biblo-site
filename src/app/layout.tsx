@@ -30,7 +30,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${geistMono.variable} antialiased text-[#0d0f12] bg-white`}>
         <header className="sticky top-0 z-50 h-16 backdrop-blur-md bg-white/70 border-b border-zinc-200/70">
           <div className="mx-auto w-full max-w-[1120px] px-4 h-full flex items-center justify-between">
-            <Link href="#top" className="flex items-center gap-2 font-bold">
+            <Link href="/" className="flex items-center gap-2 font-bold">
               <Image
                 src="/biblo_logo_long.png"
                 alt="Biblo"

@@ -98,7 +98,7 @@ export default function Home() {
         <div className="mx-auto w-full max-w-[1120px] px-4">
           <h2 className="text-3xl md:text-4xl font-semibold text-center">Biblo — La plateforme tout-en-un</h2>
           <p className="mt-2 mb-8 text-center text-zinc-600 text-[1.25em]">Centralisez vos références produits, vos inspirations et vos moodboards, pour un flux de travail enfin simple et efficace.</p>
-          <div className="mt-12 grid gap-6">
+          <div className="mt-12 grid gap-12 md:gap-16">
             {[{
               title: "Collectez rapidement vos produits",
               desc: "Sélectionnez rapidement vos objets grâce au clipper web qui capture intelligemment les informations des produits trouvés sur Internet. En quelques clics, enregistrez l'objet ou le matériau dans votre bibliothèque avec toutes ses données : images, prix, dimensions et caractéristiques.",
