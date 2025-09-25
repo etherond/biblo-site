@@ -52,8 +52,8 @@ export default function Home() {
               "Des informations produits noyées dans des tableaux Excel sans fin",
               "Des moodboards et présentations clients qui prennent un temps précieux",
             ].map((text) => (
-              <li key={text} className="flex items-start justify-center gap-3">
-                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 mt-1">
+            <li key={text} className="flex items-start justify-center gap-3">
+                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 mt-1 flex-none" width="20" height="20" aria-hidden="true">
                   <path d="M6 6l12 12M18 6L6 18" stroke="#ef4444" strokeWidth="2.2" strokeLinecap="round"/>
                 </svg>
                 <span className="text-[1.25rem] leading-snug text-center text-zinc-900">{text}</span>
