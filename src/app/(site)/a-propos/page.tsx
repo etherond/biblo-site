@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 export const metadata = { title: 'À propos — Biblo' };
 export default function Page() {
   return (

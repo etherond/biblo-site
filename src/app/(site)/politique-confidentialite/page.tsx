@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 export const metadata = { title: 'Politique de confidentialité — Biblo' };
 export default function Page() {
   return (

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 export const metadata = { title: 'Mentions légales — Biblo' };
 export default function Page() {
   return (
