@@ -13,7 +13,7 @@ export default function Page() {
         <div className="space-y-3">
           <p><strong>Adresse :</strong> 179 bd Voltaire 75011 Paris</p>
           <p><strong>Mail :</strong> <a href="mailto:hello@biblo.app" className="text-blue-600 hover:underline">hello@biblo.app</a></p>
-          <p><strong>Directrice de la publication :</strong> Delphine David</p>
+          <p><strong>Directeur de la publication :</strong> Eric Thérond</p>
           <p><strong>Hébergeur :</strong> GANDI SAS - 63-65 boulevard Masséna Paris 75013 FRANCE</p>
         </div>
       </div>
