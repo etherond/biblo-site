@@ -82,8 +82,8 @@ export default function Page() {
         <h2 className="text-2xl font-semibold mt-8 mb-4">Cession des données à caractère personnel</h2>
         
         <p className="mb-6">
-          Vos données à caractère personnel ne feront pas l'objet de cessions, locations ou échanges au bénéfice de tiers.
-        </p>
+       		Les données collectées via l’application peuvent, conformément à la réglementation en vigueur, être cédées ou communiquées à des partenaires ou prestataires, à des fins de gestion, de prospection ou de développement commercial. L’utilisateur conserve la possibilité de s’y opposer en contactant le responsable de traitement.       
+	</p>
         
         <h2 className="text-2xl font-semibold mt-8 mb-4">Durée de conservation des données à caractère personnel</h2>
         
