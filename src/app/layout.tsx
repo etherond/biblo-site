@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Biblo — La solution pour les architectes et designers d'intérieur",
+  title: "Laslo — La solution pour les architectes et designers d'intérieur",
   description:
-    "Biblo centralise vos références produits, inspirations et moodboards pour un flux de travail simple et efficace.",
+    "Laslo centralise vos références produits, inspirations et moodboards pour un flux de travail simple et efficace.",
 };
 
 export default function RootLayout({
@@ -32,11 +32,11 @@ export default function RootLayout({
           <div className="mx-auto w-full max-w-[1120px] px-4 h-full flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2 font-bold">
               <Image
-                src="/biblo_logo_long.png"
-                alt="Biblo"
-                width={140}
-                height={24}
-                className="h-6 w-auto"
+                src="/laslo_logo_long.png"
+                alt="Laslo"
+                width={160}
+                height={32}
+                className="h-8 w-auto"
                 priority
               />
             </Link>

@@ -2,8 +2,8 @@ import { NextRequest } from "next/server";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const TO_EMAIL = "contact@biblo.app";
-const FROM_EMAIL = process.env.EMAIL_FROM || "Biblo <no-reply@biblo.app>";
+const TO_EMAIL = "contact@laslo.app";
+const FROM_EMAIL = process.env.EMAIL_FROM || "Laslo <no-reply@laslo.app>";
 
 function isValidEmail(value: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim().toLowerCase());

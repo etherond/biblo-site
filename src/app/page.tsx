@@ -36,7 +36,7 @@ export default function Home() {
             </div>
           </div>
           <div>
-            <Image alt="Aperçu de Biblo" src="/img/hero.avif" width={1200} height={800} priority className="w-full h-auto rounded-xl border border-zinc-200 shadow-[0_12px_30px_rgba(13,15,18,0.06)]" />
+            <Image alt="Aperçu de Laslo" src="/img/hero.avif" width={1200} height={800} priority className="w-full h-auto rounded-xl border border-zinc-200 shadow-[0_12px_30px_rgba(13,15,18,0.06)]" />
           </div>
         </div>
       </section>
@@ -89,14 +89,14 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <p className="mt-12 text-center text-zinc-600 text-[1.25em]">Biblo vous offre un espace pensé de bout en bout pour les architectes et décorateur·ice·s d’intérieur.</p>
+          <p className="mt-12 text-center text-zinc-600 text-[1.25em]">Laslo vous offre un espace pensé de bout en bout pour les architectes et décorateur·ice·s d’intérieur.</p>
         </div>
       </section>
 
       {/* Product */}
       <section className="py-16 md:py-20 bg-[#f3f4f6]" id="produit">
         <div className="mx-auto w-full max-w-[1120px] px-4">
-          <h2 className="text-3xl md:text-4xl font-semibold text-center">Biblo — La plateforme tout-en-un</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold text-center">Laslo — La plateforme tout-en-un</h2>
           <p className="mt-2 mb-8 text-center text-zinc-600 text-[1.25em]">Centralisez vos références produits, vos inspirations et vos moodboards, pour un flux de travail enfin simple et efficace.</p>
           <div className="mt-12 grid gap-12 md:gap-16">
             {[{
@@ -130,7 +130,7 @@ export default function Home() {
       <section className="py-18 md:py-24">
         <div className="mx-auto w-full max-w-[1120px] px-4">
           <blockquote className="max-w-[900px] mx-auto border-l-4 border-black bg-white rounded-r-xl p-5 italic text-[#0d0f12] font-serif text-xl">
-            “J’ai créé Biblo après avoir vu des architectes et décorateurs passer plus de temps à organiser qu’à créer. Mon but : redonner du temps à votre créativité.”
+            “J’ai créé Laslo après avoir vu des architectes et décorateurs passer plus de temps à organiser qu’à créer. Mon but : redonner du temps à votre créativité.”
           </blockquote>
         </div>
       </section>
@@ -138,7 +138,7 @@ export default function Home() {
       {/* Contact CTA */}
       <section id="contact" className="pb-18 md:pb-24">
         <div className="mx-auto w-full max-w-[1120px] px-4">
-          <h2 className="text-3xl md:text-4xl mb-8 font-semibold text-center">Rejoignez la communauté Biblo</h2>
+          <h2 className="text-3xl md:text-4xl mb-8 font-semibold text-center">Rejoignez la communauté Laslo</h2>
           <ContactForm />
         </div>
       </section>

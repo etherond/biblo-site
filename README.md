@@ -22,7 +22,7 @@ Copy `env.example` to `.env.local` and fill in the values:
 
 ```
 RESEND_API_KEY=your_resend_api_key
-EMAIL_FROM="Biblo <no-reply@your-domain.com>"
+EMAIL_FROM="Laslo <no-reply@your-domain.com>"
 ```
 
 On Vercel, add these environment variables in Project Settings → Environment Variables.

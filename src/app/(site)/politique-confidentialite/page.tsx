@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-export const metadata = { title: 'Politique de confidentialité — Biblo' };
+export const metadata = { title: 'Politique de confidentialité — Laslo' };
 export default function Page() {
   return (
     <main className="container mx-auto max-w-4xl px-4 py-16">
@@ -34,7 +34,7 @@ export default function Page() {
         <h2 className="text-2xl font-semibold mt-8 mb-4">Identité du responsable de la collecte de données</h2>
         
         <p className="mb-6">
-          Le responsable de la collecte de vos données à caractère personnel est la société Biblo, dont le siège social est situé 179 bd Voltaire 75011 Paris (ci-après : « Biblo »).
+          Le responsable de la collecte de vos données à caractère personnel est la société Laslo, dont le siège social est situé 179 bd Voltaire 75011 Paris (ci-après : « Laslo »).
         </p>
         
         <h2 className="text-2xl font-semibold mt-8 mb-4">Collecte des données à caractère personnel</h2>
@@ -47,7 +47,7 @@ export default function Page() {
           <li>Gérer votre accès à certains services accessibles sur le site et leur utilisation,</li>
           <li>Effectuer les opérations relatives à la gestion des clients concernant les contrats, commandes, factures, suivis de la relation avec les clients,</li>
           <li>Constituer un fichier de membres inscrits, d'utilisateurs, de clients et prospects,</li>
-          <li>Adresser des newsletters, sollicitations et messages promotionnels. Dans le cas où vous ne le souhaiteriez pas, vous pouvez nous contacter pour demander à être retirer de cette liste de diffusion : <a href="mailto:hello@biblo.app" className="text-blue-600 hover:underline">hello@biblo.app</a></li>
+          <li>Adresser des newsletters, sollicitations et messages promotionnels. Dans le cas où vous ne le souhaiteriez pas, vous pouvez nous contacter pour demander à être retirer de cette liste de diffusion : <a href="mailto:hello@Laslo.app" className="text-blue-600 hover:underline">hello@Laslo.app</a></li>
           <li>Élaborer des statistiques commerciales et de fréquentation de nos services,</li>
           <li>Gérer la gestion des avis des personnes sur des services ou contenus,</li>
           <li>Gérer les impayés et les contentieux éventuels quant à l'utilisation de nos produits et services,</li>
@@ -203,7 +203,7 @@ export default function Page() {
         <h2 className="text-2xl font-semibold mt-8 mb-4">Accès à vos données à caractère personnel</h2>
         
         <p className="mb-4">
-          Conformément à la loi n° 78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers et aux libertés, vous disposez du droit d'obtenir la communication et, le cas échéant, la rectification ou la suppression des données vous concernant, à travers un accès en ligne à votre dossier. Vous pouvez également vous adresser à <a href="mailto:hello@biblo.app" className="text-blue-600 hover:underline">hello@biblo.app</a>
+          Conformément à la loi n° 78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers et aux libertés, vous disposez du droit d'obtenir la communication et, le cas échéant, la rectification ou la suppression des données vous concernant, à travers un accès en ligne à votre dossier. Vous pouvez également vous adresser à <a href="mailto:hello@Laslo.app" className="text-blue-600 hover:underline">hello@Laslo.app</a>
         </p>
         
         <p className="mb-4">
