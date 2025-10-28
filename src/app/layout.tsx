@@ -75,6 +75,26 @@ export default function RootLayout({
               <Link href="/politique-confidentialite" className="underline underline-offset-4 hover:text-white">Politique de confidentialité</Link>
               <Link href="/a-propos" className="underline underline-offset-4 hover:text-white">À propos</Link>
             </div>
+            <div className="mt-4">
+              <a
+                href="https://instagram.com/laslo_app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-white text-black hover:bg-white/90 transition"
+                aria-label="Notre compte Instagram @laslo_app"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="22"
+                  height="22"
+                  aria-hidden="true"
+                  className="fill-current"
+                >
+                  <path d="M12 7.2a4.8 4.8 0 1 0 0 9.6 4.8 4.8 0 0 0 0-9.6Zm0 7.8a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm6.1-8.4a1.12 1.12 0 1 1-2.24 0 1.12 1.12 0 0 1 2.24 0ZM12 1.8c-2.6 0-2.9 0-3.9.06-1 .06-1.7.22-2.3 .47-.6 .24-1.1 .57-1.6 1.03-.46 .46-.8 1-.99 1.6-.26 .6-.41 1.3-.47 2.3C2.7 8.2 2.7 8.5 2.7 11.1c0 2.6 0 2.9 .06 3.9 .06 1 .22 1.7 .47 2.3 .24 .6 .57 1.1 1.03 1.6 .46 .46 1 .8 1.6 .99 .6 .26 1.3 .41 2.3 .47 1 .06 1.3 .06 3.9 .06 2.6 0 2.9 0 3.9-.06 1-.06 1.7-.22 2.3-.47 .6-.24 1.1-.57 1.6-1.03 .46-.46 .8-1 .99-1.6 .26-.6 .41-1.3 .47-2.3 .06-1 .06-1.3 .06-3.9 0-2.6 0-2.9-.06-3.9-.06-1-.22-1.7-.47-2.3a4.54 4.54 0 0 0-.99-1.6 4.54 4.54 0 0 0-1.6-.99c-.6-.26-1.3-.41-2.3-.47-1-.06-1.3-.06-3.9-.06Zm0 1.8c2.5 0 2.8 0 3.8 .06 .9 .05 1.4 .2 1.8 .33 .45 .17 .77 .36 1.1 .68 .32 .32 .5 .64 .68 1.1 .13 .38 .28 .9 .33 1.8 .06 1 .06 1.3 .06 3.8 0 2.5 0 2.8-.06 3.8-.05 .9-.2 1.4-.33 1.8-.17 .45-.36 .77-.68 1.1-.32 .32-.64 .5-1.1 .68-.38 .13-.9 .28-1.8 .33-1 .06-1.3 .06-3.8 .06Z"/>
+                </svg>
+              </a>
+            </div>
           </div>
         </section>
       </body>
