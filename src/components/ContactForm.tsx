@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 
 export default function ContactForm() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const consentRef = useRef<HTMLInputElement>(null);
+  const websiteRef = useRef<HTMLInputElement>(null);
   const [message, setMessage] = useState<string>("");
   const [messageColor, setMessageColor] = useState<string>("text-zinc-500");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -28,11 +30,19 @@ export default function ContactForm() {
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const value = inputRef.current?.value || "";
-    if (!isValidEmail(value)) {
+    const emailValue = inputRef.current?.value || "";
+    const websiteValue = websiteRef.current?.value || "";
+    const consentValue = consentRef.current?.checked || false;
+    if (!isValidEmail(emailValue)) {
       setMessage("Veuillez entrer une adresse email valide.");
       setMessageColor("text-red-700");
       inputRef.current?.focus();
+      return;
+    }
+    if (!consentValue) {
+      setMessage("Vous devez accepter de recevoir des emails.");
+      setMessageColor("text-red-700");
+      consentRef.current?.focus();
       return;
     }
     try {
@@ -41,7 +51,7 @@ export default function ContactForm() {
       const res = await fetch("/api/invite", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: value }),
+        body: JSON.stringify({ email: emailValue, website: websiteValue, consent: consentValue }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
@@ -50,6 +60,8 @@ export default function ContactForm() {
       setMessage("Merci ! Nous vous enverrons une invitation dès que le produit sera disponible.");
       setMessageColor("text-emerald-700");
       if (inputRef.current) inputRef.current.value = "";
+      if (websiteRef.current) websiteRef.current.value = "";
+      if (consentRef.current) consentRef.current.checked = false;
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : "Impossible d'envoyer la demande pour le moment.";
       setMessage(errorMessage);
@@ -61,7 +73,7 @@ export default function ContactForm() {
 
   return (
     <div>
-      <form onSubmit={onSubmit} className="mt-3 grid gap-3 sm:grid-cols-[1fr,auto] bg-white border border-zinc-200 rounded-xl p-6 max-w-[560px] mx-auto min-h-[120px]">
+      <form onSubmit={onSubmit} className="mt-3 flex flex-col gap-3 bg-white border border-zinc-200 rounded-xl p-6 max-w-[560px] mx-auto min-h-[120px]">
         <input
           ref={inputRef}
           id="email"
@@ -70,10 +82,32 @@ export default function ContactForm() {
           className="h-14 px-4 rounded-lg border border-zinc-200 text-lg outline-none focus:border-[#2f6df6] focus:ring-4 focus:ring-[#2f6df6]/20 disabled:opacity-60"
           disabled={isSubmitting}
         />
-        <button type="submit" className="h-14 px-5 rounded-full bg-black text-white font-semibold disabled:opacity-60" disabled={isSubmitting}>
-          {isSubmitting ? "Envoi..." : "Obtenir mon accès"}
-        </button>
-        <div className="sm:col-span-2 text-center text-sm text-zinc-500 mt-1">
+        {/* Case à cocher RGPD */}
+        <label className="flex items-start gap-2 text-sm text-zinc-700">
+          <input
+            ref={consentRef}
+            type="checkbox"
+            className="mt-0.5 w-4 h-4 rounded border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-[#2f6df6]/40"
+          />
+          <span>
+            Je souhaite recevoir des emails concernant le lancement et les offres liées au produit.
+          </span>
+        </label>
+
+        <input
+          ref={websiteRef}
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          className="hidden"
+        />
+        <div className="flex justify-center">
+          <button type="submit" className="h-14 px-5 rounded-full bg-black text-white font-semibold disabled:opacity-60" disabled={isSubmitting}>
+            {isSubmitting ? "Envoi..." : "Obtenir mon accès"}
+          </button>
+        </div>
+        <div className="text-center text-sm text-zinc-500 mt-1">
           Nous vous enverrons une invitation dès que le produit sera disponible.
         </div>
       </form>
